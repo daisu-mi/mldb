@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from distutils.log import info
-from email import header
 import sys,os,re
 import fileinput
 import urllib.request
