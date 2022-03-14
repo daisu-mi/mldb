@@ -42,11 +42,11 @@ ml_result = ml.getResults()
 ml_team = ml.getTeams()
 
 thisMonday = getThisMonday()
-today = getToday() + 1
-
+today = getToday() 
 team_score = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
-for i in range(20220307, 20220311):
+for i in range(thisMonday, (today+1)):
+#for i in range(20220307, 20220311):
     try:
         key = str(i) + '01'
         score = ml_result[key]
@@ -74,7 +74,6 @@ for i in range(20220307, 20220311):
 for i in range(0, len(team_score)):
     team_id = str(i + 1)
     point = round(team_score[i], 1)
-
     output = "%s,\t\t %.1f" % (ml_team[team_id], point)
     print(output)
 
