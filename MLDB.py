@@ -72,6 +72,25 @@ class MleagueDB(object):
     def getPlayers(self):
         return self.players
 
+    def getNumberofPlayers(self):
+        return len(self.players)
+
+    def getTeamName(self, id):
+        team_id = str(id)
+        print(self.teams)
+        #return self.teams[team_id]
+
+    def getTeamIDbyPlayer(self, id):
+        player_id = str(id)
+        player_name = self.players[player_id]
+        team_id = self.teams_trans[player_name]
+        return team_id
+
+    def getTeamNamebyPlayer(self, id):
+        team_id = self.getTeamIDbyPlayer(id)
+        team_name = self.teams[team_id]
+        return team_name
+        
     def getPlayerName(self, id):
         player_id = str(id)
         return self.players[player_id]
@@ -225,6 +244,7 @@ class MleagueDB(object):
         # set gameid (2021040101) as index
         df = df.set_index('id')
         df = df.astype(float)
+
 
         # points
         df_point = pd.DataFrame(df.sum(skipna=True,axis=0).round(1),columns=['ポイント']).T
